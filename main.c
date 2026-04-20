@@ -1,7 +1,6 @@
 /*Name: SERUNKUUMA ABDUL MUSWAWIR
 Registration Number: 25/U/BIE/01421/PE*/
 
-
 #include <stdio.h>
 
 int main(void) {
@@ -54,10 +53,13 @@ int main(void) {
     // GPA calculations
     gpa1 = total1 / credit1;
     gpa2 = total2 / credit2;
-
     cgpa = (total1 + total2) / (credit1 + credit2);
 
-    // Classification
+    // Required output
+    printf("Semester I GPA: %.2f\n", gpa1);
+    printf("Semester II GPA: %.2f\n", gpa2);
+    printf("CGPA: %.2f\n", cgpa);
+
     if (cgpa >= 4.40) {
         printf("Classification: First Class\n");
     } else if (cgpa >= 3.60) {
@@ -69,11 +71,6 @@ int main(void) {
     } else {
         printf("Classification: Fail\n");
     }
-
-    // Required output
-    printf("Semester I GPA: %.2f\n", gpa1);
-    printf("Semester II GPA: %.2f\n", gpa2);
-    printf("CGPA: %.2f\n", cgpa);
 
     return 0;
 }
