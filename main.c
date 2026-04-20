@@ -1,28 +1,79 @@
-/*
-Name: Your Name Here
-Registration Number: Your Registration Number Here
-*/
+/*Name: SERUNKUUMA ABDUL MUSWAWIR
+Registration Number: 25/U/BIE/01421/PE*/
+
 
 #include <stdio.h>
 
 int main(void) {
-    /* Declare variables here */
+    int scores[16];
+    int credits[16] = {4,3,3,3,3,3,2,3, 4,3,3,3,3,3,3,3};
 
-    /* Read 16 scores */
+    int grade_point;
+    float total1 = 0, total2 = 0;
+    int credit1 = 0, credit2 = 0;
 
-    /* Validate input */
+    float gpa1, gpa2, cgpa;
 
-    /* Determine grades and grade points */
+    // Input scores
+    for (int i = 0; i < 16; i++) {
+        printf("Enter score %d: ", i + 1);
+        scanf("%d", &scores[i]);
 
-    /* Compute Semester I GPA */
+        if (scores[i] < 0 || scores[i] > 100) {
+            printf("Invalid score entered\n");
+            return 0;
+        }
+    }
 
-    /* Compute Semester II GPA */
+    // Process Semester I (first 8)
+    for (int i = 0; i < 8; i++) {
 
-    /* Compute CGPA */
+        if (scores[i] >= 80) grade_point = 5;
+        else if (scores[i] >= 70) grade_point = 4;
+        else if (scores[i] >= 60) grade_point = 3;
+        else if (scores[i] >= 50) grade_point = 2;
+        else grade_point = 0;
 
-    /* Determine classification */
+        total1 += grade_point * credits[i];
+        credit1 += credits[i];
+    }
 
-    /* Display full academic report */
+    // Process Semester II (next 8)
+    for (int i = 8; i < 16; i++) {
+
+        if (scores[i] >= 80) grade_point = 5;
+        else if (scores[i] >= 70) grade_point = 4;
+        else if (scores[i] >= 60) grade_point = 3;
+        else if (scores[i] >= 50) grade_point = 2;
+        else grade_point = 0;
+
+        total2 += grade_point * credits[i];
+        credit2 += credits[i];
+    }
+
+    // GPA calculations
+    gpa1 = total1 / credit1;
+    gpa2 = total2 / credit2;
+
+    cgpa = (total1 + total2) / (credit1 + credit2);
+
+    // Classification
+    if (cgpa >= 4.40) {
+        printf("Classification: First Class\n");
+    } else if (cgpa >= 3.60) {
+        printf("Classification: Second Class Upper\n");
+    } else if (cgpa >= 2.80) {
+        printf("Classification: Second Class Lower\n");
+    } else if (cgpa >= 2.00) {
+        printf("Classification: Pass\n");
+    } else {
+        printf("Classification: Fail\n");
+    }
+
+    // Required output
+    printf("Semester I GPA: %.2f\n", gpa1);
+    printf("Semester II GPA: %.2f\n", gpa2);
+    printf("CGPA: %.2f\n", cgpa);
 
     return 0;
 }
